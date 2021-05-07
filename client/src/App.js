@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "./Components/Header";
 import axios from "axios";
 import "./App.css";
 
@@ -15,6 +16,7 @@ const App = () => {
     <div className="App">
       <h1>Hello from the frontend!</h1>
       <h1>{res.body}</h1>
+      <Header />
     </div>
   );
 };
