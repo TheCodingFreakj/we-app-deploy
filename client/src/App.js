@@ -2,6 +2,8 @@ import React from "react";
 import Header from "./Components/Header";
 import axios from "axios";
 import "./App.css";
+//https://www.freecodecamp.org/news/deploying-a-mern-application-using-mongodb-atlas-to-heroku/#building-the-react-app
+//https://dev.to/hawacodes/deploying-a-mern-app-with-heroku-3km7
 
 const App = () => {
   const [res, setres] = React.useState({});
