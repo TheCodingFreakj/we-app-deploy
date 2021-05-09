@@ -7,6 +7,8 @@ require("dotenv").config();
 // Require Route
 const api = require("./routes/route");
 
+const ProductRoute = require("./routes/productRoute");
+
 //db user
 //name pallavi57 pass pallavi57
 // Create a new express application named 'app'
@@ -46,17 +48,9 @@ mongoose
   .then(() => console.log("Database Connected"));
 // Configure app to use route
 app.use("/api/v1", api);
+app.use("/api/v1", ProductRoute);
 // This middleware informs the express application to serve our compiled React files
-// if (
-//   process.env.NODE_ENV === "production" ||
-//   process.env.NODE_ENV === "staging"
-// ) {
-//   app.use(express.static(path.join(__dirname, "client/build")));
 
-//   app.get("*", function (req, res) {
-//     res.sendFile(path.join(__dirname, "client/build", "index.html"));
-//   });
-// }
 // Step 1:
 app.use(express.static(path.resolve(__dirname, "./client/build")));
 // Step 2:
@@ -72,6 +66,6 @@ app.get("*", (req, res) => {
 
 // Configure our server to listen on the port defiend by our port variable
 app.listen(port, () => console.log(`BACK_END_SERVICE_PORT: ${port}`));
-// NOTE: You may need to modify "server": "nodemon server.js", 
+// NOTE: You may need to modify "server": "nodemon server.js",
 // depending on where your sever.js is located and the name you have given.
 //  In this case, server.js is in the same level as package.json.

@@ -1,23 +1,13 @@
 import React from "react";
-import Header from "./Components/Header";
-import axios from "axios";
+import Header from "./Components/Header/index";
+import MainHeader from "./Components/Navigation/mainheader";
 import "./App.css";
-//https://www.freecodecamp.org/news/deploying-a-mern-application-using-mongodb-atlas-to-heroku/#building-the-react-app
-//https://dev.to/hawacodes/deploying-a-mern-app-with-heroku-3km7
 
 const App = () => {
-  const [res, setres] = React.useState({});
-
-  React.useEffect(() => {
-    axios.get("/api/v1/say-something").then((res) => {
-      const response = res.data;
-      setres(response);
-    });
-  });
   return (
     <div className="App">
       <h1>Hello from the frontend!</h1>
-      <h1>{res.body}</h1>
+      <MainHeader />
       <Header />
     </div>
   );
