@@ -6,12 +6,9 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 // Require Route
 const api = require("./routes/route");
-console.log(process.env.NODE_ENV);
-console.log(process.env.REACT_APP_API_URI);
+
 const ProductRoute = require("./routes/productRoute");
 
-//db user
-//name pallavi57 pass pallavi57
 // Create a new express application named 'app'
 const app = express();
 
@@ -52,18 +49,13 @@ app.use("/api/v1", api);
 app.use("/api/v1", ProductRoute);
 // This middleware informs the express application to serve our compiled React files
 
-// Step 1:
-app.use(express.static(path.resolve(__dirname, "./client/build")));
-// Step 2:
-app.get("*", function (request, response) {
-  response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
-});
-// Catch any bad requests
-app.get("*", (req, res) => {
-  res.status(200).json({
-    msg: "Catch All",
+if (process.env.NODE_ENV === "production") {
+  //set static folder
+  app.use(express.static("client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
-});
+}
 
 // Configure our server to listen on the port defiend by our port variable
 app.listen(port, () => console.log(`BACK_END_SERVICE_PORT: ${port}`));

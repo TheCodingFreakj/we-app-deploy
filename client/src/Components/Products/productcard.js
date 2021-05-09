@@ -1,9 +1,7 @@
 import React from "react";
 import "./products.css";
-import axios from "axios";
-const ProductCard = ({ id, name }) => {
-  //   console.log(props);
 
+const ProductCard = ({ id, name }) => {
   return <div>{name}</div>;
 };
 
