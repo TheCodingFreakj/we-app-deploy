@@ -12,14 +12,16 @@ const AddProd = () => {
   const [storeproducts, setstoreproducts] = React.useState();
 
   React.useEffect(() => {
-    axios.get("http://localhost:5000/api/v1/getproducts").then(
-      (response) => {
-        setstoreproducts(response.data);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    axios
+      .get("https://mern-stack-wevdev-app.herokuapp.com/api/v1/getproducts")
+      .then(
+        (response) => {
+          setstoreproducts(response.data);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }, []);
 
   const handlechange = (e) => {
@@ -30,7 +32,7 @@ const AddProd = () => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:5000/api/v1/add-product", {
+      .post("https://mern-stack-wevdev-app.herokuapp.com/api/v1/add-product", {
         prodName: products.prodName,
         price: products.price,
         desc: products.desc,
