@@ -6,7 +6,8 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 // Require Route
 const api = require("./routes/route");
-
+console.log(process.env.NODE_ENV);
+console.log(process.env.REACT_APP_API_URI);
 const ProductRoute = require("./routes/productRoute");
 
 //db user
