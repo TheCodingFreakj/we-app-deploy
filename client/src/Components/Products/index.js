@@ -6,21 +6,19 @@ import ProductCard from "../Products/productcard";
 const Products = () => {
   const [storeproducts, setstoreproducts] = React.useState();
   React.useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/v1/getproducts")
-      .then(
-        (response) => {
-          console.log(response.data);
-          setstoreproducts(response.data);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+    axios.get("http://localhost:5000/api/v1/getproducts").then(
+      (response) => {
+        console.log(response.data);
+        setstoreproducts(response.data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }, []);
 
   return (
-    <div>
+    <div className="container">
       {storeproducts ? (
         storeproducts.map((p) => <ProductCard id={p._id} name={p.prodName} />)
       ) : (

@@ -10,7 +10,7 @@ const Navlinks = (props) => {
           Home
         </NavLink>
         <NavLink to="/products">Products</NavLink>
-        <NavLink to="/products/add">Add Products</NavLink>
+        <NavLink to="/products/new">Add Products</NavLink>
         <NavLink to="/cart">Cart</NavLink>
       </li>
     </ul>

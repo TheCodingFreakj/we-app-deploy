@@ -1,19 +1,28 @@
 import React from "react";
+import MainNav from "../Navigation/mainnav";
 import {
   BrowserRouter as Router,
   Redirect,
   Route,
   Switch,
+  Link,
 } from "react-router-dom";
 import Products from "../Products/index";
 import AddProd from "../Products/addproducts";
 import Cart from "../Cart/index";
 import Home from "../Home/index";
-const Header = () => {
+import "./styles.css";
+
+const Herosection = () => {
   return (
-    <>
+    <div className="hero-section">
       <Router>
-        <main>
+        <h1 className="main-nav-title">
+          <Link to="/products">Cart system</Link>
+        </h1>
+        <MainNav />
+
+        <div className="Wrapper">
           <Switch>
             <Route path="/" exact>
               <Home />
@@ -27,12 +36,12 @@ const Header = () => {
             <Route path="/cart" exact>
               <Cart />
             </Route>
-            <Redirect to="" />
+            <Redirect to="/" />
           </Switch>
-        </main>
+        </div>
       </Router>
-    </>
+    </div>
   );
 };
 
-export default Header;
+export default Herosection;

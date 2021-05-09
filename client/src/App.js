@@ -1,14 +1,21 @@
 import React from "react";
-import Header from "./Components/Header/index";
+import Herosection from "./Components/Header/index";
+import Footer from "./Components/Footer/footer";
 import MainHeader from "./Components/Navigation/mainheader";
 import "./App.css";
 
 const App = () => {
   return (
     <div className="App">
-      <h1>Hello from the frontend!</h1>
-      <MainHeader />
-      <Header />
+      <MainHeader>
+        <div className="upper-section">
+          <Herosection />
+        </div>
+        <div className="mid-section">This is main contente</div>
+        <div className="lower-section">
+          <Footer />
+        </div>
+      </MainHeader>
     </div>
   );
 };
