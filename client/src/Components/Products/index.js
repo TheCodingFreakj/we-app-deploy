@@ -7,7 +7,7 @@ const Products = () => {
   const [storeproducts, setstoreproducts] = React.useState();
   React.useEffect(() => {
     axios
-      .get("https://mern-stack-wevdev-app.herokuapp.com/api/v1/getproducts")
+      .get("http://localhost:5000/api/v1/getproducts")
       .then(
         (response) => {
           console.log(response.data);

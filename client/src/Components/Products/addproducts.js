@@ -30,7 +30,7 @@ const AddProd = () => {
     e.preventDefault();
 
     axios
-      .post("https://mern-stack-wevdev-app.herokuapp.com/api/v1/add-product", {
+      .post("http://localhost:5000/api/v1/add-product", {
         prodName: products.prodName,
         price: products.price,
         desc: products.desc,
