@@ -2,7 +2,7 @@ import React from "react";
 import "./navlinks.css";
 import { NavLink } from "react-router-dom";
 
-const Navlinks = (props) => {
+const Navlinks = () => {
   return (
     <ul className="nav-links">
       <li>
