@@ -102,7 +102,16 @@ button.favorite.styled {
 }
 @media screen and (max-width: 768px) {
 }
-
+.modal-box {
+  width: 30rem;
+  height: 30rem;
+  z-index: 9;
+  background: turquoise;
+  position: relative;
+  bottom: 59rem;
+  left: 25rem;
+  padding: 3%;
+}
 /**************Display ************/
 .container {
   display: flex;
@@ -113,9 +122,43 @@ button.favorite.styled {
 .product-card {
   position: relative;
   margin: 3%;
-  left: 8%;
+  left: 1%;
+
   background-color: rgb(128, 0, 117);
   border: solid 2px #fff;
   padding: 3%;
   box-shadow: 120px 80px 40px 20px rgb(35, 21, 39);
+}
+
+.btn {
+  background-color: #f4511e;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  opacity: 0.6;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
 }

@@ -1,12 +1,16 @@
 import React from "react";
 import "./products.css";
 
-const ProductCard = ({ id, name }) => {
+const ProductCard = (props) => {
+  if (!props.show) {
+    return null;
+  }
+ 
+
   return (
-    <div className="product-card">
-      <h2>This is the product</h2>
-      {name}
-    </div>
+    <>
+      <div>{props.children}</div>;
+    </>
   );
 };
 
