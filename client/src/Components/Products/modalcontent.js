@@ -1,45 +1,20 @@
 import React from "react";
 import "./products.css";
-import axios from "axios";
+
 const ModalContent = (props) => {
-  return (
-    <>
-      <h2>Order Summery </h2>
-
-      <table>
-        <tr>
-          <th>Name</th>
-          <th>Price</th>
-        </tr>
-        <tr>
-          <td>Alfreds Futterkiste</td>
-          <td>12344</td>
-        </tr>
-        <tr>
-          <td>Centro comercial Moctezuma</td>
-          <td>34556</td>
-        </tr>
-        <tr>
-          <td>Ernst Handel</td>
-          <td>33445</td>
-        </tr>
-        <tr>
-          <td>Island Trading</td>
-
-          <td>3345</td>
-        </tr>
-        <tr>
-          <td>Laughing Bacchus Winecellars</td>
-          <td>23456</td>
-        </tr>
-        <tr>
-          <td>Magazzini Alimentari Riuniti</td>
-          <td>334</td>
-        </tr>
-        <button className="btn">Total: 2233445 </button>
-      </table>
-    </>
-  );
+  let productnames = Object.keys(props.selected);
+  console.log(productnames);
+  return Object.keys(props.selected).map((key, i) => (
+    <div className="order-summary" key={i}>
+      <span className="prod-name"> {key}</span>
+      <span className="price"> {props.selected[key]}</span>
+      <span className="quantity">
+        <select>
+          <option value="1">--+--</option>
+        </select>
+      </span>
+    </div>
+  ));
 };
 
 export default ModalContent;

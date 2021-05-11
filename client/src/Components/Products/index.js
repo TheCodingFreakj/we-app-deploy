@@ -7,7 +7,7 @@ import ModalContent from "../Products/modalcontent";
 const Products = () => {
   const [storeproducts, setstoreproducts] = React.useState();
   const [showmodal, setshowmodal] = React.useState(false);
-  const [selected, setselected] = React.useState([]);
+  const [selected, setselected] = React.useState({});
   React.useEffect(() => {
     axios.get("http://localhost:5000/api/v1/getproducts").then(
       (response) => {
@@ -18,16 +18,11 @@ const Products = () => {
       }
     );
   }, []);
-  let array = [];
+
   const clickedCard = (e) => {
-    addtoselected(String(e.target.id));
+    setselected({ ...selected, [e.target.name]: e.target.value });
     setshowmodal(true);
-    //create the ui using this to send the value to the product card component
-  };
-  const addtoselected = (id) => {
-    console.log(typeof id);
-    let arr = [array.concat(id)];
-    console.log(arr);
+
   };
 
   const showproducts = () => {
@@ -37,7 +32,12 @@ const Products = () => {
         <h2>{p.prodName}</h2>
         <p>{p.price}</p>
 
-        <button className="btn" id={p._id} onClick={(e) => clickedCard(e)}>
+        <button
+          className="btn"
+          name={p.prodName}
+          value={p.price}
+          onClick={(e) => clickedCard(e)}
+        >
           Click
         </button>
       </div>
@@ -54,7 +54,7 @@ const Products = () => {
           <button className="btn" onClick={() => setshowmodal(false)}>
             Close
           </button>
-          <ModalContent products={storeproducts} selected={selected} />
+          <ModalContent selected={selected} />
           <div>
             <button className="btn">Pay</button>
           </div>

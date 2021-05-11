@@ -152,13 +152,16 @@ table {
   width: 100%;
 }
 
-td,
-th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
+.order-summary {
+  display: flex;
+  flex-direction: unset;
+  justify-content: space-around;
+  background: tomato;
+  margin: 4%;
 }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
+span.prod-name,
+span.price {
+  font-size: 1.2rem;
+  font-weight: 700;
 }
