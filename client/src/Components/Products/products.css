@@ -152,7 +152,19 @@ table {
   width: 100%;
 }
 
-.order-summary {
+td,
+th {
+  border: 1px solid #503232;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #1b0808;
+  color: white;
+}
+
+/* .order-summary {
   display: flex;
   flex-direction: unset;
   justify-content: space-around;
@@ -164,4 +176,4 @@ span.prod-name,
 span.price {
   font-size: 1.2rem;
   font-weight: 700;
-}
+} */

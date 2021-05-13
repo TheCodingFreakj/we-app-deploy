@@ -7,7 +7,7 @@ import ModalContent from "../Products/modalcontent";
 const Products = () => {
   const [storeproducts, setstoreproducts] = React.useState();
   const [showmodal, setshowmodal] = React.useState(false);
-  const [selected, setselected] = React.useState({});
+  const [selected, setselected] = React.useState([]);
   React.useEffect(() => {
     axios.get("http://localhost:5000/api/v1/getproducts").then(
       (response) => {
@@ -19,31 +19,34 @@ const Products = () => {
     );
   }, []);
 
-  const clickedCard = (e) => {
-    setselected({ ...selected, [e.target.name]: e.target.value });
+  const addToCart = (newproduct) => {
+    setselected([...selected, newproduct]);
     setshowmodal(true);
-
   };
-
+  console.log(selected.newproduct);
   const showproducts = () => {
     return storeproducts.map((p) => (
       <div key={p._id} className="product-card">
         <h2>Product Catalogue</h2>
         <h2>{p.prodName}</h2>
         <p>{p.price}</p>
-
         <button
           className="btn"
-          name={p.prodName}
-          value={p.price}
-          onClick={(e) => clickedCard(e)}
+          type="submit"
+          value="add"
+          onClick={() => addToCart(p)}
         >
           Click
         </button>
       </div>
     ));
   };
-
+  const removeFromCart = (el) => {
+    console.log(el.target.id);
+    let hardCopy = [...selected];
+    hardCopy = hardCopy.filter((cartItem) => cartItem._id !== el.target.id);
+    setselected(hardCopy);
+  };
   return (
     <>
       <div className="container">
@@ -54,7 +57,7 @@ const Products = () => {
           <button className="btn" onClick={() => setshowmodal(false)}>
             Close
           </button>
-          <ModalContent selected={selected} />
+          <ModalContent selected={selected} removeFromCart={removeFromCart} />
           <div>
             <button className="btn">Pay</button>
           </div>
