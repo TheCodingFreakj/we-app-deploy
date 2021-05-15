@@ -32,8 +32,6 @@ app.use(cors());
 //app.session
 //options for cors in production
 
-console.log(process.env.NODE_ENV);
-
 //connect fb
 
 if (process.env.NODE_ENV === "production") {
@@ -44,7 +42,10 @@ if (process.env.NODE_ENV === "production") {
       useFindAndModify: false,
       useCreateIndex: true,
     })
-    .then(() => console.log(`Database connected `));
+    .then(() => console.log("DB Connected!"))
+    .catch((err) => {
+      console.log(`DB Connection Error: ${err.message}`);
+    });
 } else if (
   process.env.NODE_ENV === "development" ||
   process.env.NODE_ENV === "staging"
@@ -56,7 +57,10 @@ if (process.env.NODE_ENV === "production") {
       useFindAndModify: false,
       useCreateIndex: true,
     })
-    .then(() => console.log(`Database connected to developement db`));
+    .then(() => console.log(`Database connected to developement db`))
+    .catch((err) => {
+      console.log(`DB Connection Error: ${err.message}`);
+    });
 }
 
 // Require Route
