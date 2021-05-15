@@ -4,10 +4,6 @@ const cors = require("cors");
 const path = require("path");
 const mongoose = require("mongoose");
 require("dotenv").config();
-// Require Route
-const api = require("./routes/route");
-
-const ProductRoute = require("./routes/productRoute");
 
 // Create a new express application named 'app'
 const app = express();
@@ -33,19 +29,42 @@ app.use(express.json());
 
 // Configure the CORs middleware
 app.use(cors());
+//app.session
+//options for cors in production
+
+console.log(process.env.NODE_ENV);
 
 //connect fb
 
-mongoose
-  .connect(process.env.DATABASE, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
-  })
-  .then(() => console.log("Database Connected"));
-// Configure app to use route
+if (process.env.NODE_ENV === "production") {
+  mongoose
+    .connect(process.env.mongo_url_prod, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useFindAndModify: false,
+      useCreateIndex: true,
+    })
+    .then(() => console.log(`Database connected `));
+} else if (
+  process.env.NODE_ENV === "development" ||
+  process.env.NODE_ENV === "staging"
+) {
+  mongoose
+    .connect(process.env.mongo_url_dev, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useFindAndModify: false,
+      useCreateIndex: true,
+    })
+    .then(() => console.log(`Database connected to developement db`));
+}
+
+// Require Route
+const api = require("./routes/route");
 app.use("/api/v1", api);
+const UserRoute = require("./routes/userRoute");
+app.use("/api/v1", UserRoute);
+const ProductRoute = require("./routes/productRoute");
 app.use("/api/v1", ProductRoute);
 // This middleware informs the express application to serve our compiled React files
 

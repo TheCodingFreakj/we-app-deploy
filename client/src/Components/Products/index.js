@@ -42,7 +42,6 @@ const Products = () => {
     ));
   };
   const removeFromCart = (el) => {
-    console.log(el.target.id);
     let hardCopy = [...selected];
     hardCopy = hardCopy.filter((cartItem) => cartItem._id !== el.target.id);
     setselected(hardCopy);

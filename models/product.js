@@ -9,6 +9,7 @@ const productSchema = new mongoose.Schema(
 
     price: String,
     desc: String,
+    available_products: Number,
   },
   { timestamps: true }
 );

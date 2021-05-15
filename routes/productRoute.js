@@ -7,6 +7,6 @@ const {
 
 router.post("/add-product", addproducts);
 router.get("/getproducts", getproducts);
-// router.get("/getproduct", getproducts);
+
 
 module.exports = router;
